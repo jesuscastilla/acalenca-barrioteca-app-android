@@ -1,0 +1,16 @@
+# Archivos sensibles - NO subir a GitHub
+signing.keystore
+signing-key-info.txt
+*.apk
+*.aab
+app.apk
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Sistema operativo
+Thumbs.db
+.DS_Store
+desktop.ini
