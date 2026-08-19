@@ -1,9 +1,18 @@
 # Archivos sensibles - NO subir a GitHub
 signing.keystore
 signing-key-info.txt
+keystore.properties
 *.apk
 *.aab
 app.apk
+
+# Configuracion local (maquina especifica)
+local.properties
+
+# Gradle
+.gradle/
+build/
+app/build/
 
 # IDE
 .idea/

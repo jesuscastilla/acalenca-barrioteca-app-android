@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Credenciales de firma desde keystore.properties (NO versionado en Git)
+def keystorePropertiesFile = rootProject.file('keystore.properties')
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    namespace 'barrioteca.app.pelotxo'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'barrioteca.app.pelotxo'
+        minSdk 28
+        targetSdk 36
+        versionCode 1
+        versionName '1.0'
+
+        // Nombre de la aplicacion
+        resValue 'string', 'appName', "Barrioteca Acalenc\u00E1"
+        resValue 'string', 'launcherName', "Barrioteca Acalenc\u00E1"
+
+        // URL de lanzamiento y dominio de la TWA
+        resValue 'string', 'launchUrl', 'https://pelotxo.synology.me/barrioteca/'
+        resValue 'string', 'hostName', 'pelotxo.synology.me'
+
+        resValue 'string', 'providerAuthority', 'barrioteca.app.pelotxo.fileprovider'
+        resValue 'string', 'generatorApp', 'Bubblewrap CLI'
+        resValue 'string', 'fallbackType', 'customtabs'
+
+        // Colores de la TWA (coinciden con el tema oscuro de la PWA)
+        resValue 'color', 'colorPrimary', '#141414'
+        resValue 'color', 'colorPrimaryDark', '#141414'
+        resValue 'color', 'navigationColor', '#141414'
+        resValue 'color', 'navigationColorDark', '#000000'
+        resValue 'color', 'backgroundColor', '#FFFFFF'
+
+        resValue 'bool', 'enableNotification', 'false'
+        resValue 'integer', 'splashScreenFadeOutDuration', '0'
+    }
+
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                storeFile rootProject.file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.7.3'
+}
