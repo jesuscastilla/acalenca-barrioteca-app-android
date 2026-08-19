@@ -19,6 +19,9 @@ app/build/
 *.iml
 .vscode/
 
+# Herramientas de IA
+.artifacts/
+
 # Sistema operativo
 Thumbs.db
 .DS_Store
