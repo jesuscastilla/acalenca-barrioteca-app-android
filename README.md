@@ -150,9 +150,11 @@ La app Android **no se sube al NAS** (el APK/AAB va a Google Play o a los móvil
 
 > Si el dominio `pelotxo.synology.me` apunta a una subcarpeta concreta en Web Station, coloca `.well-known/` dentro de esa carpeta.
 
-### ¿Y la PWA?
+### ¿Y la PWA y la política de privacidad?
 
 La PWA se sigue subiendo como siempre (ver `CONTEXT.md`): `PWA/dist/` → `/barrioteca/`. La app Android cargará esa versión automáticamente. No hay que tocar el APK.
+
+La **página de privacidad** ya está creada en `PWA/public/privacidad.html`. Al hacer `npm run build` se incluye en `dist/` automáticamente. Si no recompilas, sube ese archivo suelto a `/barrioteca/privacidad.html`.
 
 ---
 
@@ -162,7 +164,7 @@ La PWA se sigue subiendo como siempre (ver `CONTEXT.md`): `PWA/dist/` → `/barr
 2. Google pedirá **verificar tu identidad** (DNI/documento). Hazlo.
 3. **Crear app** → nombre "Barrioteca Acalencá", idioma español.
 4. Completa la ficha: descripción, capturas de pantalla, **icono 512×512** (usa `LOGOS/acalenca-icono.png`) y clasificación de contenido (cuestionario).
-5. **Política de privacidad**: necesitas una URL pública. Si no la tienes, crea una página en el NAS, p. ej. `https://pelotxo.synology.me/barrioteca/privacidad.html`, y pon esa URL.
+5. **Política de privacidad**: la página ya está creada (`PWA/public/privacidad.html`). Sube `privacidad.html` a `/barrioteca/` y usa la URL `https://pelotxo.synology.me/barrioteca/privacidad.html`.
 6. **Producción → Crear release** → sube el **AAB** (`app-release.aab`).
 7. **Antes de subir**, confirma que `https://pelotxo.synology.me/.well-known/assetlinks.json` responde correctamente (Google lo comprueba y rechaza la app si no valida).
 8. Envía a revisión. La aprobación puede tardar desde horas hasta varios días.
