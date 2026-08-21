@@ -1,4 +1,4 @@
-package barrioteca.app.pelotxo;
+package com.lebeche.barrioteca;
 
 /**
  * Servicio de delegacion para Trusted Web Activity.

@@ -9,7 +9,7 @@ Este documento sirve como guion para presentar el proyecto de la Barrioteca Acal
 - Biblioteca vecinal autogestionada de forma horizontal.
 - Espacio perteneciente a Lebeche, asociacion cultural y vecinal de Salobrena.
 - Cualquier vecina puede asociarse, llevarse libros en prestamo y devolverlos cuando termine de leerlos.
-- Sin dependencia de servidores externos: todo el sistema funciona con **software libre** (SLiMS + PWA) alojado en un NAS Synology propio.
+- Sin dependencia de servidores externos: todo el sistema funciona con **software libre** (SLiMS + app web) alojado en un NAS Synology propio.
 - No se ceden datos a terceros. Privacidad total.
 
 ---
@@ -39,7 +39,7 @@ Este documento sirve como guion para presentar el proyecto de la Barrioteca Acal
 - Historico de prestamos y devoluciones.
 
 ### API REST de circulacion
-La PWA se comunica con SLiMS a traves de una API interna:
+La app web se comunica con SLiMS a traves de una API interna:
 
 | Endpoint | Funcion |
 |----------|---------|
@@ -60,22 +60,22 @@ La PWA se comunica con SLiMS a traves de una API interna:
 
 ---
 
-## 4. El Frontend: PWA (Progressive Web App)
+## 4. El Frontend: app web
 
-### Que es la PWA
-- Aplicacion web que funciona desde el navegador del movil, sin necesidad de instalar nada desde una tienda.
-- Se puede instalar como app nativa en la pantalla de inicio (Android e iOS).
+### Que es la app web
+- Aplicacion web que funciona desde el navegador del movil, sin necesidad de instalar nada.
+- Disponible tambien como app nativa en Google Play (Android) y App Store (iOS).
 - Tecnologia: React 19 + TypeScript + Vite + Tailwind CSS.
 
 ### Como funciona la autogestion
 1. **Alta de socias**: La administracion crea la ficha de la vecina en SLiMS y le asigna un ID unico (ej. `SOCIA-001`).
-2. **Identificacion**: La socia introduce su ID en la PWA desde su movil.
+2. **Identificacion**: La socia introduce su ID en la app web desde su movil.
 3. **Prestamo**: Escanea el codigo de barras del libro (ISBN, ASIN o etiqueta `LIB-XX`).
 4. **Devolucion**: Escanea el mismo codigo al devolver el libro.
 5. **Catalogo**: Cualquier socia puede buscar libros por titulo, autora o ISBN.
 
 ### Libros sin ISBN
-La PWA soporta tres metodos para libros que no tienen codigo de barras comercial:
+La app web soporta tres metodos para libros que no tienen codigo de barras comercial:
 - **Escanear etiqueta**: La administracion imprime una etiqueta con codigo `LIB-XX` generada por `anadir-libro.php` y la pega en el libro.
 - **Entrada manual**: Campo de texto en la vista de escaneo para escribir el codigo.
 - **Boton "Pedir" en catalogo**: Buscar el libro por titulo y pulsar "Pedir" directamente.
@@ -106,7 +106,7 @@ La PWA soporta tres metodos para libros que no tienen codigo de barras comercial
 ## 6. Conclusion y preguntas
 
 - La Barrioteca Acalenca es un proyecto de **autogestion vecinal** que combina tecnologia libre con organizacion horizontal.
-- El sistema ya esta funcionando: backend SLiMS, PWA instalable, escaneo de codigos, catalogo, prestamos y devoluciones.
+- El sistema ya esta funcionando: backend SLiMS, app web, apps nativas en Google Play/App Store, escaneo de codigos, catalogo, prestamos y devoluciones.
 - Los datos estan en Salobrena, en un NAS propio, sin dependencia de servicios externos.
 - Quedan tareas por completar (catalogo, logotipos, beta testers) con fecha objetivo en septiembre.
 - Abrir turno de preguntas.

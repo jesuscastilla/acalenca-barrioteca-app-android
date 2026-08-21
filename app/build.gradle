@@ -10,11 +10,11 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace 'barrioteca.app.pelotxo'
+    namespace 'com.lebeche.barrioteca'
     compileSdk 36
 
     defaultConfig {
-        applicationId 'barrioteca.app.pelotxo'
+        applicationId 'com.lebeche.barrioteca'
         minSdk 28
         targetSdk 36
         versionCode 1
@@ -28,7 +28,7 @@ android {
         resValue 'string', 'launchUrl', 'https://pelotxo.synology.me/barrioteca/'
         resValue 'string', 'hostName', 'pelotxo.synology.me'
 
-        resValue 'string', 'providerAuthority', 'barrioteca.app.pelotxo.fileprovider'
+        resValue 'string', 'providerAuthority', 'com.lebeche.barrioteca.fileprovider'
         resValue 'string', 'generatorApp', 'Bubblewrap CLI'
         resValue 'string', 'fallbackType', 'customtabs'
 

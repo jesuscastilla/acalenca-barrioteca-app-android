@@ -6,16 +6,16 @@ Esta guía explica, paso a paso y para quien no ha usado Android Studio, cómo t
 
 ## 1. Qué es esta app
 
-La app Android es una **Trusted Web Activity (TWA)**: una app nativa muy ligera que abre la PWA (`https://pelotxo.synology.me/barrioteca/`) dentro de Chrome a pantalla completa, como si fuera una app normal de la tienda.
+La app Android es una **Trusted Web Activity (TWA)**: una app nativa muy ligera que abre la app web (`https://pelotxo.synology.me/barrioteca/`) dentro de Chrome a pantalla completa, como si fuera una app normal de la tienda.
 
-- **Ventaja principal**: al actualizar la PWA en el NAS, la app se actualiza **sola** (no hay que publicar una versión nueva en Google Play).
-- **Qué NO es**: no es una copia del código dentro del APK. La app necesita conexión a internet para cargar la PWA desde el NAS.
+- **Ventaja principal**: al actualizar la app web en el NAS, la app se actualiza **sola** (no hay que publicar una versión nueva en Google Play).
+- **Qué NO es**: no es una copia del código dentro del APK. La app necesita conexión a internet para cargar la app web desde el NAS.
 
 ### Datos clave
 
 | Dato | Valor |
 |---|---|
-| Package ID | `barrioteca.app.pelotxo` |
+| Package ID | `com.lebeche.barrioteca` |
 | Nombre | Barrioteca Acalencá |
 | minSdk | 28 (Android 9 o superior) |
 | targetSdk | 36 |
@@ -150,9 +150,9 @@ La app Android **no se sube al NAS** (el APK/AAB va a Google Play o a los móvil
 
 > Si el dominio `pelotxo.synology.me` apunta a una subcarpeta concreta en Web Station, coloca `.well-known/` dentro de esa carpeta.
 
-### ¿Y la PWA y la política de privacidad?
+### ¿Y la app web y la política de privacidad?
 
-La PWA se sigue subiendo como siempre (ver `CONTEXT.md`): `PWA/dist/` → `/barrioteca/`. La app Android cargará esa versión automáticamente. No hay que tocar el APK.
+La app web se sigue subiendo como siempre (ver `CONTEXT.md`): `PWA/dist/` → `/barrioteca/`. La app Android cargará esa versión automáticamente. No hay que tocar el APK.
 
 La **página de privacidad** ya está creada en `PWA/public/privacidad.html`. Al hacer `npm run build` se incluye en `dist/` automáticamente. Si no recompilas, sube ese archivo suelto a `/barrioteca/privacidad.html`.
 
@@ -173,7 +173,7 @@ La **página de privacidad** ya está creada en `PWA/public/privacidad.html`. Al
 
 ## 10. Actualizar la app
 
-- **Si solo cambias la PWA (frontend)**: sube `PWA/dist/` al NAS. La app se actualiza sola. **No hace falta publicar una versión nueva en Play.**
+- **Si solo cambias la app web (frontend)**: sube `PWA/dist/` al NAS. La app se actualiza sola. **No hace falta publicar una versión nueva en Play.**
 - **Si cambias la app Android** (icono, permisos, package, etc.): sube `versionCode` (y `versionName`) en `app/build.gradle`, recompila y sube un nuevo AAB a Google Play.
 
 ---

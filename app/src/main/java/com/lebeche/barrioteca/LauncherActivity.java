@@ -1,4 +1,4 @@
-package barrioteca.app.pelotxo;
+package com.lebeche.barrioteca;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package barrioteca.app.pelotxo;
+package com.lebeche.barrioteca;
 
 /**
  * Clase Application de la Trusted Web Activity.
